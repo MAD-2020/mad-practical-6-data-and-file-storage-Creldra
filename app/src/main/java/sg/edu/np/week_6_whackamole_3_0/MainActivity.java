@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private static final String FILENAME = "MainActivity.java";
     private static final String TAG = "Whack-A-Mole3.0!";
+    EditText et_Username;
+    EditText et_Password;
+    Button login;
+    TextView newUser;
+
+    String username;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +45,31 @@ public class MainActivity extends AppCompatActivity {
             Log.v(TAG, FILENAME + ": Invalid user!");
 
         */
+        et_Username = findViewById(R.id.enter_Username);
+        et_Password = findViewById(R.id.enter_Password);
+        login = findViewById(R.id.loginButton);
+        newUser = findViewById(R.id.createNewUser);
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                username = et_Username.getText().toString();
+                password = et_Password.getText().toString();
+                if (isValidUser(username, password) == true){
+                    Intent intent = new Intent(MainActivity.this, Main3Activity.class);
+                    startActivity(intent);
+                }
+            }
+        });
 
+        newUser.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
     protected void onStop(){
@@ -54,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             Log.v(TAG, FILENAME + ": Running Checks..." + dbData.getMyUserName() + ": " + dbData.getMyPassword() +" <--> "+ userName + " " + password);
             You may choose to use this or modify to suit your design.
          */
-
+        return false;
     }
 
 }

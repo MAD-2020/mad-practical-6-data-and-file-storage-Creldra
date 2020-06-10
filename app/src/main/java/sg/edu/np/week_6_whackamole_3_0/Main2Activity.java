@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -23,9 +24,13 @@ public class Main2Activity extends AppCompatActivity {
         5. There is an option to cancel. This loads the login user page.
      */
 
-
     private static final String FILENAME = "Main2Activity.java";
     private static final String TAG = "Whack-A-Mole3.0!";
+
+    EditText et_Username;
+    EditText et_Password;
+    Button cancelBtn;
+    Button createBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,25 @@ public class Main2Activity extends AppCompatActivity {
             Log.v(TAG, FILENAME + ": User already exist during new user creation!");
 
          */
+        et_Username = findViewById(R.id.enter_Username);
+        et_Password = findViewById(R.id.enter_Password);
+        cancelBtn = findViewById(R.id.cancelButton);
+        createBtn = findViewById(R.id.createButton);
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        createBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     protected void onStop() {

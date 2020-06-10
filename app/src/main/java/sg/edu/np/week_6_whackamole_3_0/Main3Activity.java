@@ -28,6 +28,9 @@ public class Main3Activity extends AppCompatActivity {
     private static final String FILENAME = "Main3Activity.java";
     private static final String TAG = "Whack-A-Mole3.0!";
 
+    Button backToLogin;
+    RecyclerView levelView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,17 @@ public class Main3Activity extends AppCompatActivity {
 
         Log.v(TAG, FILENAME + ": Show level for User: "+ userName);
          */
+
+        backToLogin = findViewById(R.id.backToLogin);
+        levelView = findViewById(R.id.recView_Level);
+
+        backToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main3Activity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
